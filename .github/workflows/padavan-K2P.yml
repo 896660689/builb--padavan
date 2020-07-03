@@ -52,7 +52,7 @@ jobs:
     - name: Build Tool Chain           # 4.构建工具链
       run: |
         cd $WORK_PATH/toolchain-mipsel
-        wget https://github.com/896660689/padavan-toolchain/releases/download/0628/toolchain-3.4.x.tar.gz
+        wget https://github.com/896660689/builb--padavan/releases/download/0702/toolchain-3.4.x.tar.gz
         tar -zxvf toolchain-3.4.x.tar.gz -C /opt/rt-n56u/toolchain-mipsel
         mkdir ${WORK_PATH}/images/
     - name: Clear And Build            # 5.清理构建树并开始构建
