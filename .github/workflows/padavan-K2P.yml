@@ -5,7 +5,7 @@
 name: Padavan CI K2P
 on:
   # schedule:                           # 时间表
-  #   - cron: '0 22 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
+  #   - cron: '10 01 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
   push:                               # push 操作
     branches:                         # 分支
       - ad                        # 主分支
