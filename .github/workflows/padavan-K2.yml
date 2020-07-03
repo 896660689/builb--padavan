@@ -8,7 +8,7 @@ on:
   #   - cron: '0 23 * * *'              # 每天国际时间19点，北京时间凌晨3点执行(北京+8)
   push:                               # push 操作
     branches:                         # 分支
-      - ad                            # 主分支
+      - master                            # 主分支
   #   paths:                            # 路径
   #     - openwrt/*                     # 监听openwrt目录下所有文件的push操作
     paths:                            # 路径
@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
     steps:
-    - name: Checkout Ad                # 1.导入主分支
-      uses: actions/checkout@ad
+    - name: Checkout Master                # 1.导入主分支
+      uses: actions/checkout@master
     - name: Initialization Environment # 2.初始环境的设置
       env:
         DEBIAN_FRONTEND: noninteractive  # 非交互模式
