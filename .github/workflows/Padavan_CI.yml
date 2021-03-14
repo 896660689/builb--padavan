@@ -1,19 +1,17 @@
-#修改 targets: 中的 "PSG1218" 为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-# by: TurBoTse
-
 name: Padavan_CI
 
 on:
-#  release:
-#    types: [published]
-#  push:                                                        # 推送操作
+  push:                                                        # 推送操作
 #    tags:
 #      - 'v*'
+  workflow_dispatch:                                            # 分支
 #    branches:                                                  # 分支
-#      - main                                                   # 主分支
-  workflow_dispatch:                                                        # 分支
+      - ad                                                     # 主分支
   watch:                                                        # 监视操作
     types: [started]                                            # 点击 Star 之后
+  release:
+    types: [published]
+
 env:
   images_dir: /opt/images                                       # 固件目录
   build_dir: /opt/rt-n56u                                       # 源码目录
@@ -60,10 +58,11 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 Star
+    if: ${{ !(github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }} ## 自己点的 Star
     env:
       build_variant: ${{ matrix.build_variant }}
       targets: ${{ matrix.targets }}
+      images_dir: /opt/images
     strategy:
       matrix:
         include:
@@ -75,7 +74,7 @@ jobs:
             targets: "HC5761A"
     steps:
       - name: Checkout ad              # 导入主分支
-        uses: actions/checkout@main
+      - uses: actions/checkout@main
       - name: Prepare environment      # 准备编译环境
         run: |                         # 安装依赖包
           sudo apt update
@@ -105,7 +104,7 @@ jobs:
             if [ -f public/$m.sh ]; then cp -f public/$m.sh $work_dir; echo "$m.sh 拷贝成功"; fi; fi; done; \
           for m in $targets; do  if [ ! -f public/$m.config ]; then echo "public/$m.config 未找到"
           else
-            if [ -f public/$m.config ]; then cp -f public/$m.config $config_dir/$m.config; echo "$m.config 已修改"; fi; fi; done; \
+          if [ -f public/$m.config ]; then cp -f public/$m.config $config_dir/$m.config; echo "$m.config 已修改"; fi; fi; done; \
           if [ -f public/public.sh ]; then cp -f public/public.sh $work_dir; fi
           if [ -d padavan/config ]; then cp -f padavan/config/* $work_dir; fi
           if [ -d padavan/scripts ]; then cp -f padavan/scripts/* $work_dir; fi
@@ -117,7 +116,7 @@ jobs:
         run: |                         # 执行构建固件
           cd $work_dir
           for m in $targets; do fakeroot ./build_firmware_ci $m; \
-          if [ $? = 0 ]; then mv -f images/*.trx $images_dir/padavan_${m}_$(date +%Y%m%d).trx; else exit 1; fi; \
+          if [ $? = 0 ]; then mv -f images/*.trx ${images_dir}/padavan_${m}_$(date +%Y%m%d).trx; else exit 1; fi; \
           ./clear_tree_simple >/dev/null 2>&1; done
       - name: Upload images to Artifact
         if: ${{ success() }}
