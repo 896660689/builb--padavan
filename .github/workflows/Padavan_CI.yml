@@ -1,7 +1,7 @@
 name: Padavan_CI
 
 on:
-  push:                                                        # 推送操作
+#  push:                                                        # 推送操作
 #    tags:
 #      - 'v*'
   workflow_dispatch:                                            # 分支
