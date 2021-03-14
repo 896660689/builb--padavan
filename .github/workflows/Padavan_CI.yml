@@ -4,9 +4,9 @@ on:
 #  push:                                                        # 推送操作
 #    tags:
 #      - 'v*'
-  workflow_dispatch:                                            # 分支
 #    branches:                                                  # 分支
-      - ad                                                     # 主分支
+#      - ad                                                     # 主分支
+  workflow_dispatch:                                            # 分支
   watch:                                                        # 监视操作
     types: [started]                                            # 点击 Star 之后
   release:
