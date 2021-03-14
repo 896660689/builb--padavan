@@ -1,16 +1,17 @@
 name: Padavan_CI
 
-on: 
-#  release:
-#    types: [published]
-#  push:                                                        # 推送操作
+on:
+  push:                                                        # 推送操作
 #    tags:
 #      - 'v*'
+  workflow_dispatch:                                            # 分支
 #    branches:                                                  # 分支
-#      - ad                                                   # 主分支
-  workflow_dispatch:                                                        # 分支
+      - ad                                                     # 主分支
   watch:                                                        # 监视操作
     types: [started]                                            # 点击 Star 之后
+  release:
+    types: [published]
+
 env:
   images_dir: /opt/images                                       # 固件目录
   build_dir: /opt/rt-n56u                                       # 源码目录
@@ -73,7 +74,7 @@ jobs:
             targets: "HC5761A"
     steps:
       - name: Checkout ad              # 导入主分支
-      - uses: actions/checkout@main
+        uses: actions/checkout@main
       - name: Prepare environment      # 准备编译环境
         run: |                         # 安装依赖包
           sudo apt update
