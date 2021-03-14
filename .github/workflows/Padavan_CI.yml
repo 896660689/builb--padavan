@@ -1,15 +1,14 @@
 name: Padavan_CI
 
 on: 
-  release:
-    types: [published]
-  push:                                                        # 推送操作
-    tags:
-    - 'v*'
-  #  branches:                                                 # 主分支
-    - ad                                                       # 分支
-#  schedule:
-#    - cron: 0 8 * * 5
+#  release:
+#    types: [published]
+#  push:                                                        # 推送操作
+#    tags:
+#      - 'v*'
+#    branches:                                                  # 分支
+#      - ad                                                   # 主分支
+  workflow_dispatch:                                                        # 分支
   watch:                                                        # 监视操作
     types: [started]                                            # 点击 Star 之后
 env:
