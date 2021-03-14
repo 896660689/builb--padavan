@@ -1,16 +1,17 @@
 name: Padavan_CI
 
-on:
-#  push:                                                        # 推送操作
-#    tags:
-#      - 'v*'
-  workflow_dispatch:                                            # 分支
-#    branches:                                                  # 分支
-      - ad                                                     # 主分支
-  watch:                                                        # 监视操作
-    types: [started]                                            # 点击 Star 之后
+on: 
   release:
     types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+    - ad
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
 env:
   images_dir: /opt/images                                       # 固件目录
   build_dir: /opt/rt-n56u                                       # 源码目录
