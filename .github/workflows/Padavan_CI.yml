@@ -1,7 +1,7 @@
 name: Padavan_CI
 
 on:
-  push:                                                        # 推送操作
+#  push:                                                        # 推送操作
 #    tags:
 #      - 'v*'
   workflow_dispatch:                                            # 分支
@@ -11,7 +11,6 @@ on:
     types: [started]                                            # 点击 Star 之后
   release:
     types: [published]
-
 env:
   images_dir: /opt/images                                       # 固件目录
   build_dir: /opt/rt-n56u                                       # 源码目录
@@ -104,7 +103,7 @@ jobs:
             if [ -f public/$m.sh ]; then cp -f public/$m.sh $work_dir; echo "$m.sh 拷贝成功"; fi; fi; done; \
           for m in $targets; do  if [ ! -f public/$m.config ]; then echo "public/$m.config 未找到"
           else
-          if [ -f public/$m.config ]; then cp -f public/$m.config $config_dir/$m.config; echo "$m.config 已修改"; fi; fi; done; \
+            if [ -f public/$m.config ]; then cp -f public/$m.config $config_dir/$m.config; echo "$m.config 已修改"; fi; fi; done; \
           if [ -f public/public.sh ]; then cp -f public/public.sh $work_dir; fi
           if [ -d padavan/config ]; then cp -f padavan/config/* $work_dir; fi
           if [ -d padavan/scripts ]; then cp -f padavan/scripts/* $work_dir; fi
