@@ -1,6 +1,7 @@
 name: Padavan_CI
 
-on: 
+on:
+  workflow_dispatch:
   release:
     types: [published]
   push:
@@ -74,7 +75,7 @@ jobs:
           sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
       - name: Clone source code
         run: |                         # 克隆源码
-          git clone --depth=1 --branch=ad $src_git $build_dir
+          git clone -b ad --depth=1 $src_git $build_dir
       - name: Prepare toolchain
         run: |                         # 下载预编译的构建工具链
           # sh dl_toolchain.sh
