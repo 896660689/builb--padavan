@@ -1,0 +1,3 @@
+存放设备的自定义脚本 例如: K2.sh
+
+优先执行 public 公共文件夹下的然后再执行 padavan/scripts
