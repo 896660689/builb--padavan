@@ -39,40 +39,32 @@ sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV=$version_time/g" ./vers
 ######################################################################
 # 以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
 ######################################################################
+        echo "CONFIG_FIRMWARE_INCLUDE_LANG_CN=y" >> .config
+        echo "CONFIG_FIRMWARE_ENABLE_IPV6=y" >> .config
+        echo "CONFIG_FIRMWARE_ENABLE_EXFAT=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_IPSET=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_TCPDUMP=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_HDPARM=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SMBD36=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_RPL2TP=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_EAP_PEAP=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SFTP=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_CURL=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config
+        echo "#CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=y" >> .config
 
-# 科学
-#echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config  # SS plus+
-#echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=n" >> .config     # SS server
-
-#  代理
-#echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config      # TUNSAFE
-
-# 广告
-echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config       # adbyby plus+
-
-# DNS 有关
-#echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >> .config # DNS-FORWARDER
-#echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config     # smartdns
-#echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=y" >> .config  # smartdns二进制文件
-
-# Default
-
-### Include OpenSSH instead of dropbear. openssl ~1.2MB, openssh ~1.0MB
-echo "CONFIG_FIRMWARE_INCLUDE_OPENSSH=n" >> .config
-
-### Include dropbear SSH. ~0.3MB
-echo "CONFIG_FIRMWARE_INCLUDE_DROPBEAR=y" >> .config
-
-### Make the dropbear symmetrical ciphers and hashes faster. ~0.06MB
-echo "CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE=y" >> .config
-
-### Include HTTPS support for DDNS client. openssl ~1.2MB
-echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config
-
-### Include HTTPS support. openssl ~1.2MB
-echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config
-
-#网易云解锁
-#echo "CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config
-#网易云解锁GO版本执行文件（4M多）注意固件超大小
-#echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config
