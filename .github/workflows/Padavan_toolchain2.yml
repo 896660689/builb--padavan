@@ -32,7 +32,7 @@ jobs:
           sudo apt install libtool-bin gperf python-docutils autopoint gettext help2man
       - name: Clone source code
         run: |
-          git clone --depth=1 --branch=ad $src_git $src_dir
+          git clone -b ad --depth=1 $src_git $src_dir
       - name: Build toolchain
         run: |
           cd $build_dir
