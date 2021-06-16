@@ -28,8 +28,8 @@ jobs:
     steps:
       - name: Prepare environment
         run: |
-          sudo apt list --upgradable
-          sudo apt update
+          sudo apt-get update
+          sudo apt-get upgrade
           sudo apt install libtool-bin gperf python3 -docutils autopoint gettext help2man
       - name: Clone source code
         run: |
