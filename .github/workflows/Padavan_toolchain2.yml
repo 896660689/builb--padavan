@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get upgrade
-          sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext help2man
+          sudo apt-get install libtool-bin gperf python3 -docutils autopoint gettext help2man
       - name: Clone source code
         run: |
           git clone -b zerotier --depth=1 $src_git $src_dir
