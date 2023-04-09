@@ -72,7 +72,7 @@ jobs:
         run: |                         # 安装依赖包
           sudo apt-get clean
           sudo apt-get update
-          sudo apt-get libtool-bin gperf python3-docutils autopoint gettext help2man ccache \
+          sudo apt-get libtool libtool-bin gperf python3-docutils autopoint gettext help2man ccache \
           -y unzip curl cmake gawk flex bison nano xxd fakeroot lzma lib32z1 \
           cpio git automake autopoint texinfo build-essential gcc-multilib \
           pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget      - name: Clone source code
