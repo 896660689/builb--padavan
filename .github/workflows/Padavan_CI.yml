@@ -72,7 +72,7 @@ jobs:
         run: |                         # 安装依赖包
           sudo apt-get clean
           sudo apt-get update
-          sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext help2man
+          sudo apt-get install libtool-bin gperf python3 -docutils autopoint gettext help2man
           sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
       - name: Clone source code
         run: |                         # 克隆源码
