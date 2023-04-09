@@ -76,6 +76,8 @@ jobs:
           -y unzip curl cmake gawk flex bison nano xxd fakeroot lzma lib32z1 \
           cpio git automake autopoint texinfo build-essential gcc-multilib \
           pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget      - name: Clone source code
+          sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
+      - name: Clone source code
         run: |                         # 克隆源码
           git clone -b zerotier --depth=1 $src_git $build_dir
       - name: Prepare toolchain
