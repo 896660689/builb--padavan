@@ -62,8 +62,8 @@ sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV=$version_time/g" ./vers
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=y" >> .config
-        echo "#CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config
-        echo "#CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=y" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config
