@@ -28,7 +28,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get upgrade
-        sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext help2man
+        sudo apt-get install libtool-bin gperf python3 -docutils autopoint gettext help2man
     - name: Clone source code
       env:
         TNAME: https://github.com/896660689/rt-n56u.git
