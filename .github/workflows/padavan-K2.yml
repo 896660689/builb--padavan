@@ -49,7 +49,7 @@ jobs:
         sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
     - name: Clone Code                 # 3.拷贝代码
       run: |
-        git clone --depth=1 $CLONE_URL -b $CLONE_BRANCH $WORK_PATH
+        git clone --depth=1 --branch=zerotier $CLONE_URL -b $CLONE_BRANCH $WORK_PATH
     - name: Build Tool Chain           # 4.构建工具链
       run: |
         cd $WORK_PATH/toolchain-mipsel
