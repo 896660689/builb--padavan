@@ -50,7 +50,7 @@ env:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     if: ${{ !(github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }} ## 自己点的 Star
     env:
       build_variant: ${{ matrix.build_variant }}
@@ -66,14 +66,15 @@ jobs:
           - build_variant: "mt7628"
             targets: "HC5761A"
     steps:
-      - name: Checkout ad              # 导入主分支
+      - name: Checkout zerotier         # 导入主分支
         uses: actions/checkout@main
       - name: Prepare environment      # 准备编译环境
         run: |                         # 安装依赖包
-          sudo apt-get update
-          sudo apt-get -y install python unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot kmod cpio git python3-docutils gettext automake autopoint texinfo build-essential help2man pkg-config zlib1g-dev libgmp3-dev libmpfr-dev libncurses5-dev libltdl-dev wget libc-dev-bin gettext
-          sudo timedatectl set-timezone 'Asia/Shanghai'  # 设置时区
-      - name: Clone source code
+          sudo apt update
+          sudo apt install libtool-bin gperf python3-docutils autopoint gettext help2man ccache \
+          -y unzip curl cmake gawk flex bison nano xxd fakeroot lzma lib32z1 \
+          cpio git automake autopoint texinfo build-essential gcc-multilib \
+          pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget      - name: Clone source code
         run: |                         # 克隆源码
           git clone -b zerotier --depth=1 $src_git $build_dir
       - name: Prepare toolchain
